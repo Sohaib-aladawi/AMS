@@ -15,4 +15,7 @@ class Advaisor extends Model
     public function students(){
         return $this->hasMany(Student::class);
     }
+    public function departments(){
+        return $this -> belongsTo(Department::class);
+    }
 }

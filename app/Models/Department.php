@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Models\Student;
+use App\Models\Advaisor;
+use App\Models\Coures_specialization;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Department extends Model
 {
@@ -13,5 +17,11 @@ class Department extends Model
     use HasFactory;
     public function students(){
         return $this->hasMany(Student::class);
+    }
+    public function courses_specialization(){
+        return $this->belongsToMany(Coures_specialization::class);
+    }
+    public function advisors(){
+        return $this->hasMany(Advaisor::class);
     }
 }

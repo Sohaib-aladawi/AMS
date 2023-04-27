@@ -19,13 +19,14 @@ return new class extends Migration
             $table->string('student_name');
             $table->decimal('current_CGPA', 4, 2);
             $table->string('advisor_id');
-            $table->string('specialization_id');
+            $table->string('department_id');
+            $table->string('specialization_id')->nullable();
             $table->foreign('advisor_id')->references('advisor_id')->on('advisors');
             $table->foreignid('level_id')->references('level_id')->on('levels');
             $table->foreign('specialization_id')->references('specialization_id')->on('specializations');
             $table->integer('EL4SCORE')->nullable();
             $table->integer('IELTSSCORE')->nullable();
-            $table->integer('version');
+            $table->foreign('department_id')->references('department_id')->on('departments');
             $table->timestamps();
         });
     }

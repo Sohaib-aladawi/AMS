@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Coures_specialization extends Model
 {
     use HasFactory;
+    
 }
