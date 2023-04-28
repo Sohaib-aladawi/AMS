@@ -6,7 +6,7 @@ use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Advaisor extends Model
+class Advisor extends Model
 {
     protected $primaryKey = 'advisor_id';
     public $incrementing = false;

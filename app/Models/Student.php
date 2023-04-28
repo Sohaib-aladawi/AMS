@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Level;
-use App\Models\Advaisor;
+use App\Models\Advisor;
 use App\Models\Specialization;
 use App\Models\Student_coures;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +25,6 @@ class Student extends Model
         return $this->belongsTo(Specialization::class);
     }
     public function advisors(){
-        return $this->belongsTo(Advaisor::class);
+        return $this->belongsTo(Advisor::class);
     }
 }

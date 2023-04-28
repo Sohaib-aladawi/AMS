@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('department_id');
             $table->string('specialization_id')->nullable();
             $table->foreign('advisor_id')->references('advisor_id')->on('advisors');
-            $table->foreignid('level_id')->references('level_id')->on('levels');
             $table->foreign('specialization_id')->references('specialization_id')->on('specializations');
             $table->integer('EL4SCORE')->nullable();
             $table->integer('IELTSSCORE')->nullable();

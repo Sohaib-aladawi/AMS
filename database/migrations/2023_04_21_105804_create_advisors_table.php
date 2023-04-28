@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('advisors', function (Blueprint $table) {
             $table->string('advisor_id',10)->primary();
             $table->string('advisor_name');
+            $table->string('email');
+            $table->string('password');
             $table->string('department_id');
             $table->foreign('department_id')->references('department_id')->on('departments');
             $table->string('role');

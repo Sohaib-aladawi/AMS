@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('specializations', function (Blueprint $table) {
             $table->string('specialization_id',10)->primary();
             $table->string('specialization_name');
+            $table->string('version');
             $table->foreignId('level_id')->references('level_id')->on('levels');
             $table->timestamps();
         });
