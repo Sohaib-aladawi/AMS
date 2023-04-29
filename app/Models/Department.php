@@ -5,7 +5,7 @@ namespace App\Models;
 
 use App\Models\Student;
 use App\Models\Advisor;
-use App\Models\Coures_specialization;
+use App\Models\Course_specialization;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -19,7 +19,7 @@ class Department extends Model
         return $this->hasMany(Student::class);
     }
     public function courses_specialization(){
-        return $this->belongsToMany(Coures_specialization::class);
+        return $this->belongsToMany(Course_specialization::class);
     }
     public function advisors(){
         return $this->hasMany(Advisor::class);

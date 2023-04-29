@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Level;
 use App\Models\Student;
-use App\Models\Coures_specialization;
+use App\Models\Course_specialization;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -21,6 +21,6 @@ class Specialization extends Model
         return $this->hasMany(Student::class);
     }
     public function course_specializations(){
-        return $this->belongsToMany(Coures_specialization::class);
+        return $this->belongsToMany(Course_specialization::class);
     }
 }
