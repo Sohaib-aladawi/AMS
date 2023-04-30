@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Advisor;
 use App\Models\Student;
 use App\Models\Department;
+use App\Models\Student_course;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Database\Seeders\LevelSeeder;
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             CourseSeeder::class,
             Course_specializationSeeder::class,
+            Student_coursesSeeder::class
         ]);
         for($i=0;$i<30;$i++){
             $dept_id = DB::table('departments')->pluck('department_id');
@@ -52,6 +54,7 @@ class DatabaseSeeder extends Seeder
 
             ]);
         }
+        Student_course::factory(700)->create();
         
         
 
