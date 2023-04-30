@@ -28,10 +28,6 @@ class Student_courseFactory extends Factory
         $ssid = DB::table('students')->select(['specialization_id'])->where('student_id','=',$student_id)->value('specialization_id');
         $course_id = Course_specialization::select('course_id')->where('specialization_id','=',"$ssid")
         ->pluck('course_id')->toArray();
-        //$course_id =$course_id->toArray();
-        // if ($course_id->count() == 0) {
-        //     return  [];
-        // }
         //DD($course_id);
         return [
             'student_id' => $student_id,
