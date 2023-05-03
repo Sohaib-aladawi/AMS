@@ -22,18 +22,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($courses as $courses)
+			@php
+				$c=1;
+			@endphp
+			@foreach ($courses as $course)
 				
 			<tr>
-				<td>1</td>
-				<td>{{ $student->student_name }} </td>
-				<td>COMP101</td>
-				<td>Introduction to Computer Science</td>
+				<td>@php echo $c;    @endphp</td>
+				<td>@foreach ($course->specializations as $specialization)
+					{{ $specialization->pivot->semester }}
+				@endforeach</td>
+				<td>{{ $course->course_id }}</td>
+				<td>{{ $course->course_name }}</td>
 				<td><input type="radio" name="status" value="passed"></td>
 				<td><input type="radio" name="status" value="studying"></td>
 				<td><input type="radio" name="status" value="pending"></td>
-				<td>Core</td>
+				<td>{{ $course->specialization_id }}</td>
 			</tr>
+			@php  $c=$c+1; @endphp
 			@endforeach
 		</tbody>
 	</table>

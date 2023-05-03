@@ -10,7 +10,7 @@ class TestController extends Controller
 {
     public function index(){
         $courses = Course::with('specializations')->get();
-        dd($courses);
+        
         return view('temp', compact('courses'));
     }
 }
