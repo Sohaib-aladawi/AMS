@@ -7,7 +7,7 @@
 	<title>Course Status</title>
 </head>
 <body>
-	<h1>Course Status</h1>
+	{{-- <h1>Course Status</h1>
 	<table>
 		<thead>
 			<tr>
@@ -34,6 +34,7 @@
 				@endforeach</td>
 				<td>{{ $course->course_id }}</td>
 				<td>{{ $course->course_name }}</td>
+
 				<td><input type="radio" name="status" value="passed"></td>
 				<td><input type="radio" name="status" value="studying"></td>
 				<td><input type="radio" name="status" value="pending"></td>
@@ -42,6 +43,28 @@
 			@php  $c=$c+1; @endphp
 			@endforeach
 		</tbody>
+	</table> --}}
+	<h1>Student status</h1>
+	<table>
+		<tr>
+		<th>Course ID</th>
+		<th>Course Title</th>
+		<th>Passed</th>
+		<th>Studying</th>
+		<th>Pending</th>
+		</tr>
+
+		{{ dd($student); }}
+		@foreach ($student->courses as $course)	
+		<tr>
+			<td>{{ $course->course_id }}</td>
+			<td>{{ $course->course_name }}</td>
+			
+			<td><input type="radio" name="status" checked value="passed"></td>
+			<td><input type="radio" name="status" value="studying"></td>
+			<td><input type="radio" name="status" value="pending"></td>
+		</tr>
+		@endforeach
 	</table>
 </body>
 </html>
