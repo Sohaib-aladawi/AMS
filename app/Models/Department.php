@@ -18,9 +18,6 @@ class Department extends Model
     public function students(){
         return $this->hasMany(Student::class);
     }
-    public function courses_specialization(){
-        return $this->belongsToMany(Course_specialization::class);
-    }
     public function advisors(){
         return $this->hasMany(Advisor::class);
     }

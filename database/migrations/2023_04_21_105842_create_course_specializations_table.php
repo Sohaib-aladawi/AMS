@@ -19,11 +19,9 @@ return new class extends Migration
             $table->string('course_type');
             $table->string('type');
             $table->string('specialization_id');
-            $table->string('department_id');
             $table->string('semester');
             $table->foreign('course_id')->references('course_id')->on('courses');
             $table->foreign('specialization_id')->references('specialization_id')->on('specializations');
-            $table->foreign('department_id')->references('department_id')->on('departments');
             $table->timestamps();
         });
     }

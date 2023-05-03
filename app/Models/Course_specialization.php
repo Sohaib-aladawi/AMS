@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course_specialization extends Model
 {
+    protected $table = 'course_specializations';
     use HasFactory;
     public function students_courses(){
         return $this->belongsToMany(Student_course::class);

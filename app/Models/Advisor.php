@@ -15,7 +15,7 @@ class Advisor extends Model
     public function students(){
         return $this->hasMany(Student::class);
     }
-    public function departments(){
+    public function department(){
         return $this -> belongsTo(Department::class);
     }
 }

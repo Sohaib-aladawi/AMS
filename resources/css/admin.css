@@ -1,0 +1,32 @@
+#features {
+    padding: 7% 15%;
+    background-color: #062757;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .features-box {
+    text-align: center;
+  }
+  
+  .text {
+    color: #b2ceff;
+    font-weight: bold;
+    
+  }
+  
+  td {
+    color: aliceblue;
+  }
+  
+  .align-right {
+    float: right;
+    margin: 5px;
+  }
+  
+  /* .img_system {
+    width: 50px;
+    float: left;
+    margin-right: 10px;
+  } */
+  

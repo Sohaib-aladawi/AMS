@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Level;
+use App\Models\Course;
 use App\Models\Advisor;
 use App\Models\Specialization;
 use App\Models\Student_coures;
@@ -15,16 +16,16 @@ class Student extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     use HasFactory;
-    public function students_courses(){
-        return $this->belongsToMany(Student_coures::class);
+    public function courses(){
+        return $this->belongsToMany(Course::class);
     }
-    public function levels(){
+    public function level(){
         return $this->belongsTo(Level::class);
     }
-    public function specializations(){
+    public function specialization(){
         return $this->belongsTo(Specialization::class);
     }
-    public function advisors(){
+    public function advisor(){
         return $this->belongsTo(Advisor::class);
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('student_id');
             $table->string('course_id');
-            $table->foreign('course_id')->references('course_id')->on('course_specializations');
+            $table->foreign('course_id')->references('course_id')->on('courses');
             $table->foreign('student_id')->references('student_id')->on('students');
             $table->string('status');
             $table->integer('version');

@@ -14,13 +14,13 @@ class Specialization extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     use HasFactory;
-    public function levels(){
+    public function level(){
         return $this->belongsTo(Level::class);
     }
     public function students(){
         return $this->hasMany(Student::class);
     }
-    public function course_specializations(){
-        return $this->belongsToMany(Course_specialization::class);
+    public function courses(){
+        return $this->belongsToMany(Course::class);
     }
 }
