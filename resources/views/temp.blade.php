@@ -7,7 +7,7 @@
 	<title>Course Status</title>
 </head>
 <body>
-	{{-- <h1>Course Status</h1>
+	<h1>Course Status</h1>
 	<table>
 		<thead>
 			<tr>
@@ -38,12 +38,12 @@
 				<td><input type="radio" name="status" value="passed"></td>
 				<td><input type="radio" name="status" value="studying"></td>
 				<td><input type="radio" name="status" value="pending"></td>
-				<td>{{ $course->specialization_id }}</td>
+				<td>{{ $specialization->pivot->specialization_id }}</td>
 			</tr>
 			@php  $c=$c+1; @endphp
 			@endforeach
 		</tbody>
-	</table> --}}
+	</table>
 	<h1>Student status</h1>
 	<table>
 		<tr>
@@ -54,15 +54,15 @@
 		<th>Pending</th>
 		</tr>
 
-		{{ dd($student); }}
+		{{-- {{ dd($student); }} --}}
 		@foreach ($student->courses as $course)	
 		<tr>
 			<td>{{ $course->course_id }}</td>
-			<td>{{ $course->course_name }}</td>
+			<td>{{ $course->pivot->status }}</td>
 			
-			<td><input type="radio" name="status" checked value="passed"></td>
-			<td><input type="radio" name="status" value="studying"></td>
-			<td><input type="radio" name="status" value="pending"></td>
+			<td><input type="radio" name="{{ $course->pivot->course_id }}"  value="passed" ></td>
+			<td><input type="radio" name="{{ $course->pivot->course_id }}" value="studying"  ></td>
+			<td><input type="radio" name="{{ $course->pivot->course_id }}" value="pending"></td>
 		</tr>
 		@endforeach
 	</table>

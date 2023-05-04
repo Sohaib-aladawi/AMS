@@ -20,6 +20,6 @@ class Course extends Model
         return $this->hasMany(Course_specialization::class);
     }
     public function students(){
-        return $this->belongsToMany(Student::class);
+        return $this->belongsToMany(Student::class,'student_id');
     }
 }

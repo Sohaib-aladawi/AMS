@@ -17,13 +17,13 @@ class Student extends Model
     protected $keyType = 'string';
     use HasFactory;
     public function courses(){
-        return $this->belongsToMany(Course::class,'student_courses','course_id','student_id')->withPivot('status');
+        return $this->belongsToMany(Course::class,'student_courses','student_id','course_id')->withpivot('status');
     }
     public function level(){
         return $this->belongsTo(Level::class);
     }
     public function specialization(){
-        return $this->belongsTo(Specialization::class);
+        return $this->belongsTo(Specialization::class, 'specialization_id');
     }
     public function advisor(){
         return $this->belongsTo(Advisor::class);

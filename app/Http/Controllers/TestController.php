@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function index(){
-        $student = Student::findOrFail('s76s198')->first();
+        $student = Student::with('courses')->findOrFail('s76s198');
+        // $student = Student::with('courses')->get();
         $courses = Course::with('specializations')->get();
+        // dd($courses);
         return view('temp', compact('courses','student'));
     }
 }
