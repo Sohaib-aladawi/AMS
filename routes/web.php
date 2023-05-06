@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\AdvaisorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 //Route::view('/temp', 'temp');
 
+
 Route::get('/temp',[TestController::class,'index']);
+Route::get('/temps',[TestController::class,'students']);
+
+// login page
+Route::get('/',[AdvaisorController::class,'login']);
+Route::post('/authenticate',[AdvaisorController::class,'authenticate']);

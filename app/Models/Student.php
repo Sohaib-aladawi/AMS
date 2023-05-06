@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Level;
 use App\Models\Course;
 use App\Models\Advisor;
@@ -25,7 +26,7 @@ class Student extends Model
     public function specialization(){
         return $this->belongsTo(Specialization::class, 'specialization_id');
     }
-    public function advisor(){
-        return $this->belongsTo(Advisor::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

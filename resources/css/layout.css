@@ -1,0 +1,10 @@
+#features{
+    padding: 7% 15%;
+    background-color: #062757;
+    position: relative;
+    z-index: 1;
+}
+
+.features-box{
+    text-align: center;
+}

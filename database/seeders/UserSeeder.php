@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Advisor;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class AdvisorSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,9 @@ class AdvisorSeeder extends Seeder
      */
     public function run()
     {
-        Advisor::insert([
+        User::insert([
             [
-                'advisor_id' =>'e123',
+                'advisor_code' =>'e123',
                 'advisor_name' =>'Ali',
                 'email' =>'Ali@utas.edu.om',
                 'password' =>bcrypt('123'),
@@ -27,7 +27,7 @@ class AdvisorSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'advisor_id' =>'e456',
+                'advisor_code' =>'e456',
                 'advisor_name' =>'Salim',
                 'email' =>'Salim@utas.edu.om',
                 'password' =>bcrypt('123'),
@@ -37,6 +37,5 @@ class AdvisorSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
-        
     }
 }
