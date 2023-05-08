@@ -17,6 +17,18 @@ class AdvaisorController extends Controller
         return view('login');
     }
 
+
+    // Logout User
+    public function logout(Request $request) {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+
+    }
+
     // authenticate user
     public function authenticate(Request $request){
         //dd($request);
@@ -29,7 +41,7 @@ class AdvaisorController extends Controller
         if(auth()->attempt($formFields)){
             $request -> session() -> regenerate();
 
-            return redirect('/temps');
+            return redirect('/index');
         }
         return redirect('/')->withErrors([
             'email' => 'The provided credentials do not match our records.',

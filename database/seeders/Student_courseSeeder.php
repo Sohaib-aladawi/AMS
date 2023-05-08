@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Course_specialization;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class Student_coursesSeeder extends Seeder
+class Student_courseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

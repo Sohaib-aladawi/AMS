@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             CourseSeeder::class,
             Course_specializationSeeder::class,
-            Student_coursesSeeder::class
+            Student_courseSeeder::class
         ]);
         
         // for($i=0;$i<30;$i++){

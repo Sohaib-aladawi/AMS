@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdvaisorController;
+use App\Models\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +25,25 @@ use App\Http\Controllers\AdvaisorController;
 
 
 Route::get('/temp',[TestController::class,'index']);
-Route::get('/temps',[TestController::class,'students']);
+// Route::get('/temps',[TestController::class,'students']);
+
+
+
+// User loguot
+Route::get('/logout',[AdvaisorController::class,'logout']);
 
 // login page
 Route::get('/',[AdvaisorController::class,'login']);
 Route::post('/authenticate',[AdvaisorController::class,'authenticate']);
+
+// show dashbord
+Route::get('/index',[StudentController::class,'students']);
+Route::get('/index/{studentId}', [StudentController::class, 'showInfo']);
+
+// Show the preAdvis page
+Route::get('/preAdvice/{id}', [StudentController::class, 'showPre'])->name('preAdvice');
+// Route::get('/preAdvice/{id}', function($id){
+//     return view('preAdvise',[
+//         'student' => Student::find($id)
+//     ]);
+// });

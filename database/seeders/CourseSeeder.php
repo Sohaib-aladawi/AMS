@@ -19,7 +19,7 @@ class CourseSeeder extends Seeder
             [
                 'course_id' => 'UNEN1102',
                 'course_name' => 'English I',
-                'prerequisite' => 'None',
+                'prerequisite' => null,
                 'course_version' => 5,
                 'credit_hours' => 3,
                 'passing_mark' => 60,

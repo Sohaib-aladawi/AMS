@@ -18,7 +18,7 @@ class Student extends Model
     protected $keyType = 'string';
     use HasFactory;
     public function courses(){
-        return $this->belongsToMany(Course::class,'student_courses','student_id','course_id')->withpivot('status');
+        return $this->belongsToMany(Course::class,'student_course','student_id','course_id')->withpivot('status','version');
     }
     public function level(){
         return $this->belongsTo(Level::class);

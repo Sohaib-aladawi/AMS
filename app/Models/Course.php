@@ -14,7 +14,7 @@ class Course extends Model
     protected $keyType = 'string';
     use HasFactory;
     public function specializations(){
-        return $this->belongsToMany(Specialization::class,'course_specializations','course_id','specialization_id')->withPivot('course_type','type','semester');
+        return $this->belongsToMany(Specialization::class,'course_specialization','course_id','specialization_id')->withPivot('course_type','type','semester');
     }
     public function informations(){
         return $this->hasMany(Course_specialization::class);
