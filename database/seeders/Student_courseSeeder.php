@@ -17,14 +17,14 @@ class Student_courseSeeder extends Seeder
      */
     public function run()
     { 
-        $se = Course_specialization::select('course_id')->where('specialization_id','=','SE')->pluck('course_id')->toArray();
-        $gn = Course_specialization::select('course_id')->where('specialization_id','=','GN')->pluck('course_id')->toArray();
+        $se = Course_specialization::with('specializations')->select('course_id')->pluck('course_id')->toArray();
+        //dd($se);
         $status = ['pass','study','pending'];
-        for($i=0;$i<sizeof($gn)-1;$i++){
+        for($i=0;$i<sizeof($se)-1;$i++){
             Student_course::insert([
                 [
                     'student_id'=>'s76s198',
-                    'course_id'=>$gn[$i],
+                    'course_id'=>$se[$i],
                     'status'=>$status[2],
                     'version'=>5,
                     'created_at' => now(),

@@ -65,8 +65,11 @@
                         <input type="email" id="form2Example17" class="form-control form-control-lg" name="email" value="{{ old('email') }}" required />
                         <label class="form-label" for="form2Example17"
                           >Email</label
-                        >
-                      </div>
+                          >
+                         
+                      </div> @if ($errors->has('email'))
+                          <span> {{ $errors->first('email') }}</span>
+                         @endif
 
                       <div class="form-outline mb-4">
                         <input
@@ -79,9 +82,9 @@
                         <label class="form-label" for="form2Example27" 
                           >Password</label
                         >
-                        {{-- @if ($errors->has('password'))
+                        @if ($errors->has('password'))
                             <span>{{ $errors->first('password') }}</span>
-                        @endif --}}
+                        @endif
                       </div>
 
                       <div class="pt-1 mb-4">

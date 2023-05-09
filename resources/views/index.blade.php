@@ -74,6 +74,7 @@
 
     <!--  -->
     <section id="features">
+        @csrf
         <div class="features-box row">
             <div class="col-md-6">
                 <!-- search box -->
@@ -88,7 +89,7 @@
                         </button>
                     </div>
                     <!-- Report button -->
-                    <a href="../report/report.html">
+                    <a href="/">
                         <div class="d-grid gap-2">
                             <button class="btn bg-warning" type="button"><span
                                     class="text-white">Report</span></button>
@@ -116,11 +117,11 @@
                 <h3 class="text-whit" id="specialiaztion"></h3>
                 <h3 class="text-whit"id="CGPA"></h3>
                 <hr />
-                <a class="btn btn-secondary" role="button" href="/preAdvice/" id="PreAdvice">
+                <a class="btn btn-secondary" role="button" href="/index" id="PreAdvice">
                     Pre-advice
                 </a>
-                <a href="/editStudent">
-                    <button class="btn btn-warning" type="button">Edit</button>
+                <a href="/editStudent"class="btn btn-warning" role="button" href="/index" id="edit">
+                    Edit
                 </a>
             </div>
         </div>
@@ -141,7 +142,8 @@
 
             $('.btn-light').click(function() {
                 var studentId = $(this).data('student-id');
-                var link = document.getElementById("PreAdvice");
+                var pre = document.getElementById("PreAdvice");
+                var edit = document.getElementById("edit");
 
                 $.ajax({
                     url: '/index/' + studentId,
@@ -161,7 +163,8 @@
                       
                     }
                   });
-                  link.setAttribute("href", "/preAdvice/" + studentId);
+                  pre.setAttribute("href", "/preAdvise/" + studentId);
+                  edit.setAttribute("href", "/editStudent/" + studentId);
             });
 
         });

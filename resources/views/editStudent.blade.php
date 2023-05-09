@@ -5,15 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/logo.png" />
-
+    <link rel="icon" href="{{asset('images/logo.png')}}" />
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-    <title>AMS</title>
     <style>
         #features {
             padding: 7% 15%;
@@ -42,11 +40,12 @@
         }
 
         /* .img_system {
-      width: 50px;
-      float: left;
-      margin-right: 10px;
-    } */
+    width: 50px;
+    float: left;
+    margin-right: 10px;
+  } */
     </style>
+    <title>AMS</title>
 </head>
 
 <body>
@@ -58,8 +57,8 @@
             <div class="container">
                 <!-- Navbar brand -->
                 <a class="navbar-brand me-2" href="/index">
-                    <img src="images/profile.jpg" height="60" alt="Photo" loading="lazy"
-                        style="margin-top: -1px" />
+                    <img src="{{ asset('images/profile.jpg')  }}" height="60" alt="Photo"
+                        loading="lazy" style="margin-top: -1px" />
                 </a>
 
                 <!-- Toggle button -->
@@ -75,7 +74,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <br />
-                            <p class="nav-link" href="/index">{{ auth()->user()->advisor_name }}</p>
+                            <p class="nav-link" href="#">Hi Mr.Vinesh Jain,</p>
                         </li>
                     </ul>
                     <!-- Left links -->
@@ -95,13 +94,9 @@
 
     <!--  -->
     <section id="features">
-        <form action="/preAdvise/{{ $student->student_id }}" method="POST">
+        <form action="/editStudent/{{ $student->student_id }}" method="POST" id="formEdit">
             @csrf
             @method('PUT')
-            <div>
-                <h4 class="text-white">Name: {{ $student->student_name }}</h4>
-            </div>
-            <br />
             <div class="row">
                 <div class="col-md-4">
                     <h4 class="text">CGPA: <span class="text-white">{{ $student->current_CGPA }}</span></h4>
@@ -156,9 +151,8 @@
                   <h4 class="text">Audit Type: <span class="text-white">5</span></h4>
                 </div>
               </div>
-              <hr />
-              <div class="features-box row">
-                @unless (count($courses->where('status', 'pending')) === 0)
+            <hr />
+            <div class="features-box row">
                 <table class="table table-bordered border-light">
                     <thead class="table-light">
                         <tr>
@@ -166,71 +160,48 @@
                             <th scope="col">Course Code</th>
                             <th scope="col">Course title</th>
                             <th scope="col">Course Type</th>
-                            <th scope="col">Prerequisite</th>
-                            <th scope="col">Name Prer</th>
-                            <th scope="col">Pinding</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $c = 1;
-                            
-                        @endphp
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>CSDB1102</td>
+                            <td>Introduction to Database</td>
+                            <td>College</td>
+                            <td>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>Choose - Status</option>
+                                    <option value="1">Passed</option>
+                                    <option value="2">Studying</option>
+                                    <option value="3">Pinding</option>
+                                </select>
+                            </td>
+                        </tr>
 
-
-                            @foreach ($courses as $course)
-                                @php
-                                    $pre = $course->prerequisite;
-                                    $name = $course->course_id;
-                                @endphp
-                                @if ($course->status == 'pending')
-                                    <tr>
-                                        <th scope="row">{{ $c }}</th>
-                                        <td>{{ $course->course_id }}</td>
-                                        <td>{{ $course->course_name }}</td>
-                                        <td> {{ $course->course_type }}</td>
-                                        <td>{{ $course->prerequisite }}</td>
-                                        <td>
-                                            @if ($course->prerequisite != null)
-                                                @foreach ($all as $course)
-                                                    @if ($course->course_id == $pre)
-                                                        {{ $course->course_name }} I
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <input class="form-check-input" type="checkbox" name="courses[]"
-                                                value="{{ $name }}" id="flexCheckDefault" />
-                                        </td>
-                                    </tr>
-                                    @php
-                                        $c = $c + 1;
-                                    @endphp
-                                @endif
-                            @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                      <button type="submit" class="btn btn-warning align-right">Save</button>
-                    </form>
-                    <!-- Button Submit -->
-                    <a href="/index"><button type="button" class="btn btn-white align-right" type="button">
-                      Back
-                    </button></a>
-                  </section>
-                    @else
-                    <a href="/editStudent/{{ $student->student_id }}"><button type="button" class="btn btn-warning align-right" type="button">
-                      Update the level
-                  </button></a>
-                </div>
-              </form>
-              
-              <a href="/index"><button type="button" class="btn btn-white align-right" type="button">
-                Back
-              </button></a>
-            </section>
-            @endunless
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>CSSE2101</td>
+                            <td>Introduction to Software Engineering</td>
+                            <td>Specialization</td>
+                            <td>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>Choose - Status</option>
+                                    <option value="1">Passed</option>
+                                    <option value="2">Studying</option>
+                                    <option value="3">Pinding</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <!-- Button Submit -->
+        <button type="submit" class="btn btn-warning align-right" name="" form="formEdit">Save</button>
+        <a href="/index"><button type="button" class="btn btn-white align-right"
+                type="button">Back</button></a>
+    </section>
 
     <section id="copyright">
         <a href="/index">
@@ -240,32 +211,6 @@
             </div>
         </a>
     </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var checkboxes = $('input[type="checkbox"]');
-            var cgpa = {{ $student->current_CGPA }};
-
-            checkboxes.change(function() {
-                var checkedCount = checkboxes.filter(':checked').length;
-                var condition = false;
-                var limit = 6; // Set the desired limit for checked checkboxes
-
-                if (cgpa < 2.0) {
-                    condition = true;
-                    limit = 4;
-                }
-
-                if (checkedCount > limit && condition) {
-                    this.checked = false; // Prevent checking more checkboxes
-                    alert("This student is in probation and cannot take more than 4 courses!");
-                } else if (checkedCount > limit && !condition) {
-                    this.checked = false; // Prevent checking more checkboxes
-                    alert("Cannot take more than 6 courses per semester!");
-                }
-            });
-        });
-    </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
 </body>
 

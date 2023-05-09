@@ -16,12 +16,17 @@ use App\Models\Student;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/preAdvice/{id}', function($id){
+//     return view('preAdvise',[
+//         'student' => Student::find($id)
+//     ]);
+// });
 
 // Route::get('/', function () {
 //     return view('index');
 // });
 
-//Route::view('/temp', 'temp');
+// Route::view('/temp', 'temp');
 
 
 Route::get('/temp',[TestController::class,'index']);
@@ -41,9 +46,11 @@ Route::get('/index',[StudentController::class,'students']);
 Route::get('/index/{studentId}', [StudentController::class, 'showInfo']);
 
 // Show the preAdvis page
-Route::get('/preAdvice/{id}', [StudentController::class, 'showPre'])->name('preAdvice');
-// Route::get('/preAdvice/{id}', function($id){
-//     return view('preAdvise',[
-//         'student' => Student::find($id)
-//     ]);
-// });
+Route::get('/preAdvise/{id}', [StudentController::class, 'showPre'])->name('preAdvice');
+
+// update status of preAdive page
+Route::put('/preAdvise/{id}',[StudentController::class, 'saveStatus']);
+
+// edit stuednt information
+Route::get('/editStudent/{id}',[StudentController::class, 'showEdit']);
+

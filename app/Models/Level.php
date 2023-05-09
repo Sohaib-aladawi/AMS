@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Level extends Model
 {
+    protected $primaryKey = 'level_id';
     use HasFactory;
     public function students(){
         return $this->hasMany(Student::class);

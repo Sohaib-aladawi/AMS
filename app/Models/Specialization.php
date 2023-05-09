@@ -15,7 +15,7 @@ class Specialization extends Model
     protected $keyType = 'string';
     use HasFactory;
     public function level(){
-        return $this->belongsTo(Level::class);
+        return $this->belongsTo(Level::class,'level_id');
     }
     public function students(){
         return $this->hasMany(Student::class);
