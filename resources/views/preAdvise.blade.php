@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-3">
                     <h4 class="text">Status: <span class="text-white">
-                            studying
+                            {{ $student->status }}
                         </span></h4>
                 </div>
             </div>

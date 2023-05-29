@@ -64,7 +64,7 @@ class StudentController extends Controller
 
     // show edit page
     public function showEdit($id){
-        $student = Student::find($id);
+    $student = Student::find($id);
     $specializationId = $student->specialization_id;
     $all = Course::all();
     $courses = DB::table('course_specialization')
@@ -75,9 +75,10 @@ class StudentController extends Controller
                     })->where('course_specialization.specialization_id', '=', $specializationId)
                      ->orderBy('semester')->get();
 
-    $specialization = Specialization::with('level')->where('specialization_id', '=', $specializationId)->first();
+    $specializations = Specialization::with('level')->get();
+    //dd($specialization);
 
-    return view('/editStudent', ['student' => $student, 'courses' => $courses, 'specialization' => $specialization, 'all' =>$all]);
+    return view('/editStudent', ['student' => $student, 'courses' => $courses, 'specializations' => $specializations, 'all' =>$all]);
 
     }
 
