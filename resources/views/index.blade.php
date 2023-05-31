@@ -113,9 +113,11 @@
             </div>
 
             <div class="col-md-6">
-                <h3 class="text-whit" id="name"></h3>
-                <h3 class="text-whit" id="specialiaztion"></h3>
-                <h3 class="text-whit"id="CGPA"></h3>
+                <h3 class="text-white" id="name"></h3>
+                <h3 class="text-white" id="specialiaztion"></h3>
+                <h3 class="text-white"id="CGPA"></h3>
+                <h3 class="text-white"id="email"></h3>
+                <h3 class="text-white"id="phon"></h3>
                 <hr />
                 <a class="btn btn-secondary" role="button" href="/index" id="PreAdvice">
                     Pre-advice
@@ -154,6 +156,8 @@
                         $('#specialiaztion').text('Specialization: ' + response
                             .specialization_id);
                         $('#CGPA').text('CGPA: ' + response.current_CGPA);
+                        $('#email').text('Email: ' + response.email);
+                        $('#phon').text('Phon: ' + response.phon);
                     },
                     // Get the <a> element by its ID
 

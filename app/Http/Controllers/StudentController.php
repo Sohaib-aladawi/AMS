@@ -27,6 +27,8 @@ class StudentController extends Controller
             'student_name' => $student->student_name,
             'specialization_id' => $student->specialization->specialization_name,
             'current_CGPA' => $student->current_CGPA,
+            'email' => $student->email,
+            'phon' => $student->phon,
         ];
         return response()->json($data);
         
