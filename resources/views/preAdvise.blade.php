@@ -58,7 +58,7 @@
             <div class="container">
                 <!-- Navbar brand -->
                 <a class="navbar-brand me-2" href="/index">
-                    <img src="images/profile.jpg" height="60" alt="Photo" loading="lazy"
+                    <img src="{{ asset('images/profile.jpg') }}" height="60" alt="Photo" loading="lazy"
                         style="margin-top: -1px" />
                 </a>
 

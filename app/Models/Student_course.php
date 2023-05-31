@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student_course extends Model
 {
-    
+    protected $fillable = [
+        'status',
+        
+    ];
+
     use HasFactory;
     protected $table = 'student_course';
 }

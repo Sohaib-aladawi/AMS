@@ -42,7 +42,7 @@ Route::get('/',[AdvaisorController::class,'login']);
 Route::post('/authenticate',[AdvaisorController::class,'authenticate']);
 
 // show dashbord
-Route::get('/index',[StudentController::class,'students']);
+Route::get('/index',[StudentController::class,'students'])->name('index');
 Route::get('/index/{studentId}', [StudentController::class, 'showInfo']);
 
 // Show the preAdvis page
@@ -53,4 +53,7 @@ Route::put('/preAdvise/{id}',[StudentController::class, 'saveStatus']);
 
 // edit stuednt information
 Route::get('/editStudent/{id}',[StudentController::class, 'showEdit']);
+
+// Update student information
+Route::put('/editStudent/{id}',[StudentController::class,'update']);
 

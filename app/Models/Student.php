@@ -16,6 +16,14 @@ class Student extends Model
     protected $primaryKey = 'student_id';
     public $incrementing = false;
     protected $keyType = 'string';
+    protected $fillable = [
+        'student_name',
+        'current_CGPA',
+        'specialization_id',
+        'status',
+        'IELTSSCORE',
+        
+    ];
     use HasFactory;
     public function courses(){
         return $this->belongsToMany(Course::class,'student_course','student_id','course_id')->withpivot('status','version');

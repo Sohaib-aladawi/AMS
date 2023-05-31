@@ -100,12 +100,12 @@
 
     <!--  -->
     <section id="features">
-        <form action="/editStudent/{{ $student->student_id }}/save" method="POST" id="formEdit">
+        <form action="/editStudent/{{ $student->student_id }}" method="POST" id="formEdit">
             @csrf
             @method('PUT')
             <div class="col-md-4">
                 <div class="form-outline" style="width: 96%;">
-                    <input type="text" id="Sname" class="form-control form-control"
+                    <input type="text" id="Sname" class="form-control form-control" name="name"
                         value="{{ $student->student_name }}" style="color: rgb(248,141,42);" />
                     <label class="form-label text-white" for="Sname">Name</label>
 
@@ -116,13 +116,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-outline">
-                        <input type="number" id="Scgpa" class="form-control form-control"
-                            value="{{ $student->current_CGPA }}" style="color: rgb(248,141,42);" />
+                        <input type="number" id="Scgpa" class="form-control form-control" name="CGPA"
+                            value="{{ $student->current_CGPA }}" min="0.0" max="4.0" step="any" style="color: rgb(248,141,42);" />
                         <label class="form-label text-white" for="Scgpa">CGPA</label>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <select class="form-select" aria-label="Default select example" id='specialization'
+                    <select class="form-select" aria-label="Default select example" id='specialization' name="specialization"
                         style="background-color: transparent; color: rgb(248,141,42);">
                         <!-- Important to add this option  -->
 
@@ -136,7 +136,7 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-select" aria-label="Default select example" id='level'
+                    <select class="form-select" aria-label="Default select example" id='level' name="level"
                         style="background-color: transparent; color: rgb(248,141,42);">
                         <!-- Important to add this option  -->
 
@@ -146,10 +146,10 @@
             <br>
             <div class="row">
                 <div class="col-md-3">
-                    <select class="form-select" aria-label="Default select example"
+                    <select class="form-select" aria-label="Default select example" name="studentStatus"
                         style="background-color: transparent; color: rgb(248,141,42);">
                         <!-- Important to add this option  -->
-                        <option value="Studying" {{ $student->status == 'Studying' ? 'selected' : '' }}>Studying
+                        <option value="studying" {{ $student->status == 'studying' ? 'selected' : '' }}>Studying
                         </option>
                         <option value="Postponed" {{ $student->status == 'Postponed' ? 'selected' : '' }}>Postponed
                         </option>
@@ -159,7 +159,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-outline">
-                        <input type="number" id="ncsn" class="form-control form-control"
+                        <input type="number" id="ncsn" min="0.0" max="4.0" step="any" class="form-control form-control" name="IELTSSCORE"
                             style="color: rgb(248,141,42);" value="{{ $student->IELTSSCORE }}"/>
                         <label class="form-label text-white" for="ncsn">IELTS mark: </label>
                     </div>
@@ -223,7 +223,7 @@
                                     <td>{{ $course->course_name }}</td>
                                     <td>{{ $course->course_type }}</td>
                                     <td>
-                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="status[{{ $course->course_id }}]"
                                             {{-- disabled="{{ $course->status !== 'pass' }}" --}}>
                                             <option value="pass" {{ $course->status === 'pass' ? 'selected' : '' }}>
                                                 Passed</option>
@@ -244,7 +244,7 @@
                 @endunless
             </div>
             <!-- Button Submit -->
-            <button type="submit" class="btn btn-warning align-right" name="" form="formEdit">Save</button>
+            <button type="submit" class="btn btn-warning align-right" >Save</button>
             <a href="/index"><button type="button" class="btn btn-white align-right"
                     type="button">Back</button></a>
         </form>
