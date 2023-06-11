@@ -24,6 +24,10 @@
         .features-box {
             text-align: center;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
     <title>AMS</title>
 </head>
@@ -98,7 +102,8 @@
                     <!-- student button -->
                     @unless (count($students) == 0)
                         @foreach ($students as $student)
-                            <button class="btn btn-light" type="button" data-student-id="{{ $student->student_id }}">
+                            <button class="btn btn-light" onclick="toggleButtons()" type="button"
+                                data-student-id="{{ $student->student_id }}">
                                 {{ $student->student_name }}
                             </button>
                         @endforeach
@@ -113,16 +118,19 @@
             </div>
 
             <div class="col-md-6">
-                <h3 class="text-white" id="name"></h3>
-                <h3 class="text-white" id="specialiaztion"></h3>
-                <h3 class="text-white"id="CGPA"></h3>
-                <h3 class="text-white"id="email"></h3>
-                <h3 class="text-white"id="phon"></h3>
+                <div id="infoDiv" class="hidden">
+                    <h3 class="text-white" id="name"></h3>
+                    <h3 class="text-white" id="specialiaztion"></h3>
+                    <h3 class="text-white" id="CGPA"></h3>
+                    <h3 class="text-white" id="email"></h3>
+                    <h3 class="text-white" id="phon"></h3>
+                </div>
                 <hr />
-                <a class="btn btn-secondary" role="button" href="/index" id="PreAdvice">
+                <a class="btn btn-secondary" role="button" href="/index" id="PreAdvice" class="hidden">
                     Pre-advice
                 </a>
-                <a href="/editStudent"class="btn btn-warning" role="button" href="/index" id="edit">
+                <a href="/editStudent" class="btn btn-warning" role="button" href="/index" id="edit"
+                    class="hidden">
                     Edit
                 </a>
             </div>
@@ -163,15 +171,34 @@
 
                     // Update the href attribute
                     error: function() {
-                      // Handle any errors that occur during the AJAX request
-                      
+                        // Handle any errors that occur during the AJAX request
+
                     }
-                  });
-                  pre.setAttribute("href", "/preAdvise/" + studentId);
-                  edit.setAttribute("href", "/editStudent/" + studentId);
+                });
+                pre.setAttribute("href", "/preAdvise/" + studentId);
+                edit.setAttribute("href", "/editStudent/" + studentId);
             });
 
         });
+        var isContentVisible = false;
+
+        function toggleButtons() {
+            var infoDiv = document.getElementById("infoDiv");
+            var preAdviceLink = document.getElementById("PreAdvice");
+            var editLink = document.getElementById("edit");
+
+            if (isContentVisible) {
+                infoDiv.classList.add("hidden");
+                preAdviceLink.classList.add("hidden");
+                editLink.classList.add("hidden");
+                isContentVisible = false;
+            } else {
+                infoDiv.classList.remove("hidden");
+                preAdviceLink.classList.remove("hidden");
+                editLink.classList.remove("hidden");
+                isContentVisible = true;
+            }
+        }
     </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>

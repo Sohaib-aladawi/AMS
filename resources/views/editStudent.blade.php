@@ -195,7 +195,7 @@
             </div>
 
             <div class="features-box row">
-                @unless (count($courses->where('status', 'pending')) === 0)
+                @unless (count($courses) === 0)
                     <table class="table table-bordered border-light">
                         <thead class="table-light">
                             <tr>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Specialization;
 use App\Models\Student_course;
 use Illuminate\Support\Facades\DB;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class StudentController extends Controller
 {
@@ -114,6 +115,7 @@ class StudentController extends Controller
         ]);
 
         // Update the course statuses
+        if($request['status'] == null){}else{
         foreach ($request['status'] as $courseId => $status) {
             $course = $sc
                 ::where('course_id', $courseId)
@@ -124,7 +126,7 @@ class StudentController extends Controller
                 'status' => $status,
                 
             ]);
-        }
+        }}
 
         // Commit the transaction
         DB::commit();
