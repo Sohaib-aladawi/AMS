@@ -60,4 +60,5 @@ Route::put('/editStudent/{id}',[StudentController::class,'update']);
 
 // admian page show
 Route::get('/admainIndex',[AdmainController::class,'advisors'])->name('admainIndex');
+Route::get('/admainIndex/{advisorId}',[AdmainController::class,'showInfo']);
 

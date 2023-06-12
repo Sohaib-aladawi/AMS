@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/logo.png" />
-    <link rel="stylesheet" href="./homepage.style.css" />
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -25,6 +24,10 @@
         .features-box {
             text-align: center;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -37,8 +40,8 @@
             <div class="container">
                 <!-- Navbar brand -->
                 <a class="navbar-brand me-2" href="/admainIndex">
-                    <img src="images/profile.jpg" height="60" alt="Photo"
-                        loading="lazy" style="margin-top: -1px" />
+                    <img src="images/profile.jpg" height="60" alt="Photo" loading="lazy"
+                        style="margin-top: -1px" />
                 </a>
 
                 <!-- Toggle button -->
@@ -84,23 +87,31 @@
                                 <input type="search" name="search" id="search" class="form-control" />
                                 <label class="form-label text-white" for="search-input">Search </label>
                             </div>
-                            <button type="submit"   class="btn btn-warning">
+                            <button type="submit" class="btn btn-warning">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
                     </form>
                     <!-- Report button -->
-                    <a href="#">
-                        <div class="d-grid gap-2">
-                            <button class="btn bg-warning" type="button"><span
-                                    class="text-white">Report</span></button>
+                    <div class="btn-group">
+                        <div class="col-4">
+                            <a href=""><button type="button" class="btn btn-xs btn-primary">Add
+                                    Student</button></a>
                         </div>
-                    </a>
+                        <div class="col-4">
+                            <a href=""><button type="button" class="btn btn-xs btn-warning">To
+                                    Report</button></a>
+                        </div>
+                        <div class="col-4">
+                            <a href=""><button type="button" class="btn btn-xs btn-primary">Add
+                                    Advice</button></a>
+                        </div>
+                    </div>
                     <!-- Advisors button -->
                     @unless (count($advisors) == 0)
                         @foreach ($advisors as $advisor)
                             <button class="btn btn-light" onclick="toggleButtons()" type="button"
-                                data-student-id="{{ $advisor->advisor_id }}">
+                                data-advisor-id="{{ $advisor->advisor_id }}">
                                 {{ $advisor->advisor_name }}
                             </button>
                         @endforeach
@@ -114,12 +125,34 @@
             </div>
 
             <div class="col-md-6">
-                <h3 class="text-white">Name Advisor:</h3>
-                <h3 class="text-white">Num of Students: </h3>
-                <hr />
-                <a href="#">
-                    <button class="btn btn-warning" type="button">Edit</button>
-                </a>
+                <div id="infoDiv" class="hidden">
+                    <h3 class="text-white" id="name"></h3>
+                    <h3 class="text-white" id="code"></h3>
+                    <h3 class="text-white" id="email"></h3>
+                    <h3 class="text-white" id="numOfStudent"></h3>
+                    <hr />
+                    <a href="#">
+                        {{-- <button class="btn btn-warning" type="button">Edit</button> --}}
+                    </a>
+                    
+                        
+                        @unless ($num == 0)
+                            @foreach ($students as $student)
+                                <button class="btn btn-light"  type="button"
+                                    data-student-id="{{ $student->student_id }}">
+                                    {{ $student->student_name }}
+                                </button>
+                            @endforeach
+                        @else
+                            <button class="btn btn-light" type="button">
+                                No Student Assigned
+                            </button>
+                        @endunless
+
+                    <input type="hidden" id="advisorId" >
+
+                </div>
+
             </div>
         </div>
     </section>
@@ -132,6 +165,55 @@
     </section>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.btn-light').click(function() {
+                var advisorId = $(this).data('advisor-id');
+                
+                
+                // var AddS = document.getElementById("AddStudent");
+                // var addA = document.getElementById("AddAdvisor");
+                $.ajax({
+                    url: '/admainIndex/' + advisorId,
+                    method: 'GET',
+                    success: function(response) {
+                        // Update the advisor information on the page
+                        $('#name').text('Name: ' + response.advisor_name);
+                        $('#code').text('Code: ' + response.advisor_code);
+                        $('#emali').text('Email: ' + response.email);
+                        $('#numOfStudent').text('Number Of Advisee: ' + response.num);
+                        
+
+
+                    },
+                    error: function() {
+                        // Handle any errors that occur during the AJAX request
+
+                    }
+                });
+                // addS.setAttribute("href", "/AddStudent/" + advisorId);
+                // addA.setAttribute("href", "/AddAdvisor/" + advisorId);
+            });
+
+        });
+
+        var isContentVisible = false;
+
+        function toggleButtons() {
+            var infoDiv = document.getElementById("infoDiv");
+
+            if (isContentVisible) {
+                infoDiv.classList.add("hidden");
+                isContentVisible = false;
+            } else {
+                infoDiv.classList.remove("hidden");
+                
+                isContentVisible = false;
+            }
+        }
+    </script>
 </body>
 
 </html>

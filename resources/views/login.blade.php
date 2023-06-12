@@ -68,7 +68,7 @@
                           >
                          
                       </div> @if ($errors->has('email'))
-                          <span> {{ $errors->first('email') }}</span>
+                          <span style="color: red"> {{ $errors->first('email') }}</span>
                          @endif
 
                       <div class="form-outline mb-4">
@@ -82,10 +82,10 @@
                         <label class="form-label" for="form2Example27" 
                           >Password</label
                         >
-                        @if ($errors->has('password'))
-                            <span>{{ $errors->first('password') }}</span>
-                        @endif
                       </div>
+                        @if ($errors->has('password'))
+                            <span style="color: red">{{ $errors->first('password') }}</span>
+                        @endif
 
                       <div class="pt-1 mb-4">
                         <a href="/temps"><button
