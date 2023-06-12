@@ -95,7 +95,7 @@
                     <!-- Report button -->
                     <div class="btn-group">
                         <div class="col-4">
-                            <a href=""><button type="button" class="btn btn-xs btn-primary">Add
+                            <a href="/addStudent"><button type="button" class="btn btn-xs btn-primary">Add
                                     Student</button></a>
                         </div>
                         <div class="col-4">
@@ -103,8 +103,8 @@
                                     Report</button></a>
                         </div>
                         <div class="col-4">
-                            <a href=""><button type="button" class="btn btn-xs btn-primary">Add
-                                    Advice</button></a>
+                            <a href="/addAdvisor"><button type="button" class="btn btn-xs btn-primary">Add
+                                    Advisor</button></a>
                         </div>
                     </div>
                     <!-- Advisors button -->

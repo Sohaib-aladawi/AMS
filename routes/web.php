@@ -62,3 +62,8 @@ Route::put('/editStudent/{id}',[StudentController::class,'update']);
 Route::get('/admainIndex',[AdmainController::class,'advisors'])->name('admainIndex');
 Route::get('/admainIndex/{advisorId}',[AdmainController::class,'showInfo']);
 
+// Add advisor page
+Route::get('/addAdvisor',[AdmainController::class,'displayAdd']);
+
+// Save add advisor page
+Route::POST('/addAdvisor/save',[AdmainController::class,'store']);
