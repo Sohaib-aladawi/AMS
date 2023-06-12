@@ -13,9 +13,13 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 class StudentController extends Controller
 {
     // show dashbord page
-    public function students()
+    public function students(Request $request)
     {
-        $students = Student::where('advisor_id', '=', auth()->user()->advisor_id)->get();
+        if(request(['search']) ?? false){
+        $students = Student::where('advisor_id', '=', auth()->user()->advisor_id)->filter(request(['search']))
+        ->get();}else{
+            $students = Student::where('advisor_id', '=', auth()->user()->advisor_id)->get();
+        }
         return view('index', compact('students'));
     }
 

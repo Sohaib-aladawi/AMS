@@ -25,6 +25,13 @@ class Student extends Model
         
     ];
     use HasFactory;
+    public function scopeFilter($query , array $filters ){
+        if($filters['search'] ?? false){
+            $query -> where('student_id','like','%'. request('search').'%')
+                   -> orWhere('student_name','like','%'. request('search').'%')
+                   -> orWhere('phon','like','%'. request('search').'%');
+           } 
+    }
     public function courses(){
         return $this->belongsToMany(Course::class,'student_course','student_id','course_id')->withpivot('status','version');
     }

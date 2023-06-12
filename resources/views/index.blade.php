@@ -83,15 +83,18 @@
             <div class="col-md-6">
                 <!-- search box -->
                 <div class="d-grid gap-2 col-6 mx-auto">
+                <form action="/index">
                     <div class="input-group">
                         <div class="form-outline">
-                            <input type="search" id="form1" class="form-control" />
-                            <label class="form-label text-white" for="form1">Search </label>
+                            <input type="search" name="search" id="search" class="form-control" />
+                            <label class="form-label text-white" for="search-input">Search </label>
                         </div>
-                        <button type="button" class="btn btn-warning">
+                        <button type="submit"  id="" class="btn btn-warning">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
+                </form>
+                    <div id="search-results"></div>
                     <!-- Report button -->
                     <a href="/">
                         <div class="d-grid gap-2">
@@ -129,8 +132,7 @@
                 <a class="btn btn-secondary" role="button" href="/index" id="PreAdvice" class="hidden">
                     Pre-advice
                 </a>
-                <a  class="btn btn-warning" role="button" href="/index" id="edit"
-                    class="hidden">
+                <a class="btn btn-warning" role="button" href="/index" id="edit" class="hidden">
                     Edit
                 </a>
             </div>
