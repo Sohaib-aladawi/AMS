@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\StudentController;
@@ -56,4 +57,7 @@ Route::get('/editStudent/{id}',[StudentController::class, 'showEdit']);
 
 // Update student information
 Route::put('/editStudent/{id}',[StudentController::class,'update']);
+
+// admian page show
+Route::get('/admainIndex',[AdmainController::class,'advisors'])->name('admainIndex');
 

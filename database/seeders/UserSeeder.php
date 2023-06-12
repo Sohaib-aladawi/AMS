@@ -36,6 +36,16 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'advisor_code' =>'e111',
+                'advisor_name' =>'Sami mostafa',
+                'email' =>'Sami@utas.edu.om',
+                'password' =>bcrypt('321'),
+                'department_id' =>'IT',
+                'role' =>'admain',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
