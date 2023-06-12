@@ -27,6 +27,12 @@ class User extends Authenticatable
         'role',
         'department_id',
     ];
+    public function scopeFilter($query , array $filters ){
+        if($filters['search'] ?? false){
+            $query -> where('advisor_code','like','%'. request('search').'%')
+                   -> orWhere('advisor_name','like','%'. request('search').'%');
+           } 
+    }
 
     /**
      * The attributes that should be hidden for serialization.

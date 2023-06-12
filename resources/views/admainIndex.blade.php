@@ -78,15 +78,17 @@
             <div class="col-md-6">
                 <!-- search box -->
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <div class="input-group">
-                        <div class="form-outline">
-                            <input type="search" id="form1" class="form-control" />
-                            <label class="form-label text-white" for="form1">Search </label>
+                    <form action="/admainIndex">
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <input type="search" name="search" id="search" class="form-control" />
+                                <label class="form-label text-white" for="search-input">Search </label>
+                            </div>
+                            <button type="submit"   class="btn btn-warning">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-warning">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    </form>
                     <!-- Report button -->
                     <a href="#">
                         <div class="d-grid gap-2">
