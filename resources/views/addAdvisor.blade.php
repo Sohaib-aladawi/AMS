@@ -101,8 +101,8 @@
                         style="background-color: transparent; color: rgb(248,141,42);">
                         <option value="x" selected>Department</option>
                         <option value="IT">information Technology</option>
-                        <option value="2">Business</option>
-                        <option value="3">Engineer</option>
+                        <option value="BS">Business</option>
+                        <option value="ENG">Engineer</option>
                     </select>
                 </div>
             </div>

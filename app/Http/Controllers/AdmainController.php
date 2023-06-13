@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Specialization;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -68,6 +69,17 @@ class AdmainController extends Controller
         User::create($formFields);
 
         return redirect('/admainIndex');
+    }
 
+    // show add student page
+    public function showAddStudent(){
+        if (auth()->user()->role != 'admain') {
+            abort(403, 'Unauthoraized Action');
+        }
+        $specializations = Specialization::all();
+        $users = User::where('role', '=', 'user')->get();
+
+        //dd($users);
+        return view('/addStudent',['specializations'=>$specializations, 'users'=>$users]);
     }
 }

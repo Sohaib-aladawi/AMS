@@ -64,6 +64,8 @@ Route::get('/admainIndex/{advisorId}',[AdmainController::class,'showInfo']);
 
 // Add advisor page
 Route::get('/addAdvisor',[AdmainController::class,'displayAdd']);
-
 // Save add advisor page
 Route::POST('/addAdvisor/save',[AdmainController::class,'store']);
+
+// Add Student page
+Route::get('/addStudent',[AdmainController::class,'showAddStudent']);
