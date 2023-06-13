@@ -17,8 +17,14 @@ class Student extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable = [
+        'student_id',
         'student_name',
+        'phon',
+        'email',
         'current_CGPA',
+        'department_id',
+        'advisor_id',
+        'EL4SCORE',
         'specialization_id',
         'status',
         'IELTSSCORE',

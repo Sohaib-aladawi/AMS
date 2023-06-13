@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../logo.png" />
+    <link rel="icon" href="images/logo.png" />
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -42,7 +42,7 @@
             <!-- Container wrapper -->
             <div class="container">
                 <!-- Navbar brand -->
-                <a class="navbar-brand me-2" href="./homePage.html">
+                <a class="navbar-brand me-2" href="/admainIndex">
                     <img src="/images/profile.jpg" height="60" alt="Photo" loading="lazy"
                         style="margin-top: -1px" />
                 </a>
@@ -80,102 +80,140 @@
 
     <!--  -->
     <section id="features">
-        <form action="/addStudent/save" method="post" id="formEdit">
+        <form action="/addStudent/save" method="POST" id="formEdit">
             @csrf
             <h2 class="text-center text-warning">ADD a new Student</h2><br>
 
             <div class="form-outline w-25">
-                <input type="text" class="form-control" name="student_id" style="color: rgb(248,141,42);" required />
+                <input type="text" class="form-control" name="student_id" value="{{ old('student_id') }}"
+                    style="color: rgb(248,141,42);" required />
                 <label class="form-label text-white">Student ID </label>
+                @if ($errors->has('student_id'))
+                    <span style="color: red">{{ $errors->first('student_id') }}</span>
+                @endif
             </div>
 
             <div class="row my-3">
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="student_name" style="color: rgb(248,141,42);"
-                            required />
+                        <input type="text" class="form-control" name="student_name" value="{{ old('student_name') }}"
+                            style="color: rgb(248,141,42);" required />
                         <label class="form-label text-white">Student Name </label>
+                        @if ($errors->has('student_name'))
+                            <span style="color: red">{{ $errors->first('student_name') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <input type="email" class="form-control" name="email" style="color: rgb(248,141,42);"
-                            required />
+                        <input type="email" class="form-control" name="email" value="{{ old('email') }}"
+                            style="color: rgb(248,141,42);" required />
                         <label class="form-label text-white">Email </label>
+                        @if ($errors->has('email'))
+                            <span style="color: red">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <input type="number" class="form-control" name="phone" style="color: rgb(248,141,42);"
-                            required />
+                        <input type="number" class="form-control" name="phone" value="{{ old('phone') }}"
+                            style="color: rgb(248,141,42);" required />
                         <label class="form-label text-white">Phone number</label>
+                        @if ($errors->has('phone'))
+                            <span style="color: red">{{ $errors->first('phone') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="current_CGPA" style="color: rgb(248,141,42);"
-                            required />
+                        <input type="text" class="form-control" name="current_CGPA" value="{{ old('current_CGPA') }}"
+                            style="color: rgb(248,141,42);" required />
                         <label class="form-label text-white">CGPA</label>
+                        @if ($errors->has('current_CGPA'))
+                            <span style="color: red">{{ $errors->first('current_CGPA') }}</span>
+                        @endif
                     </div>
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-md-6">
-                    <select class="form-select" name="department_id" aria-label="Default select example"
+                    <select class="form-select" name="department_id" value="{{ old('department_id') }}"
+                        aria-label="Default select example"
                         style="background-color: transparent; color: rgb(248,141,42);">
-                        <option value="x" selected>Department</option>
-                        <option value="IT">IT</option>
+                        <option value="IT" selected>IT</option>
                         <option value="BS">Business</option>
                         <option value="ENG">Engineer</option>
                     </select>
+                    @if ($errors->has('current_CGPA'))
+                        <span style="color: red">{{ $errors->first('current_CGPA') }}</span>
+                    @endif
                 </div>
                 <div class="col-md-6">
-                    <select class="form-select" aria-label="Default select example"
+                    <select class="form-select" aria-label="Default select example" name="specialization_id"
+                        value="{{ old('specialization_id') }}"
                         style="background-color: transparent; color: rgb(248,141,42);">
-                        <option value="x" selected>Specialiaztion</option>
                         @foreach ($specializations as $specialization)
-                            <option value="{{ $specialization->specialization_id }}">
+                            @php
+                                $selected = $specialization->specialization_id == 'GN' ? 'selected' : '';
+                            @endphp
+                            <option value="{{ $specialization->specialization_id }} "{{ $selected }}>
                                 {{ $specialization->specialization_name }}
                             </option>
                         @endforeach
                     </select>
+                    @if ($errors->has('specialization_id'))
+                        <span style="color: red">{{ $errors->first('specialization_id') }}</span>
+                    @endif
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-md-6">
                     <select class="form-select" name="advisor_id" aria-label="Default select example"
+                        value="{{ old('advisor_id') }}"
                         style="background-color: transparent; color: rgb(248,141,42);">
-                        <option value="x" selected>Adviser</option>
                         @foreach ($users as $user)
                             <option value="{{ $user->advisor_id }}">
                                 {{ $user->advisor_name }}
                             </option>
                         @endforeach
                     </select>
+                    @if ($errors->has('advisor_id'))
+                        <span style="color: red">{{ $errors->first('advisor_id') }}</span>
+                    @endif
                 </div>
                 <div class="col-md-6">
                     <select class="form-select" name="status" aria-label="Default select example"
-                        style="background-color: transparent; color: rgb(248,141,42);">
-                        <option value="x" selected>Status</option>
-                        <option value="1">Studying</option>
+                        value="{{ old('status') }}" style="background-color: transparent; color: rgb(248,141,42);">
+                        <option value="studying" selected>Studying</option>
                     </select>
+                    @if ($errors->has('status'))
+                        <span style="color: red">{{ $errors->first('status') }}</span>
+                    @endif
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <input type="number" class="form-control" name="EL4SCORE" style="color: rgb(248,141,42);" required />
+                        <input type="number" class="form-control" name="EL4SCORE" value="{{ old('EL4SCORE') }}"
+                            style="color: rgb(248,141,42);" required />
                         <label class="form-label text-white">Mark Level 4</label>
+                        @if ($errors->has('EL4SCORE'))
+                            <span style="color: red">{{ $errors->first('EL4SCORE') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <input type="text" class="form-control" name="IELTSSCORE" style="color: rgb(248,141,42);" min="0"
+                        <input type="text" class="form-control" name="IELTSSCORE"
+                            value="{{ old('IELTSSCORE') }}" style="color: rgb(248,141,42);" min="0"
                             max="4" />
                         <label class="form-label text-white">ILETS mark</label>
+                        @if ($errors->has('IELTSSCORE'))
+                            <span style="color: red">{{ $errors->first('IELTSSCORE') }}</span>
+                        @endif
                     </div>
                 </div>
             </div><br>
@@ -185,7 +223,7 @@
                 <button type="reset" class="btn btn-white" name="">Clean</button>
             </div><br>
             <div class="text-center">
-                <a href="../Dashbord/homePage.html"><button type="button" class="btn btn-white align-right"
+                <a href="/admainIndex"><button type="button" class="btn btn-white align-right"
                         type="button">Back</button></a>
             </div>
         </form>
@@ -194,8 +232,7 @@
     <section id="copyright">
         <a href="">
             <div class="h-100 d-flex align-items-center justify-content-center" style="padding-top: 20px">
-                <img src="D:\Universety\course prject\frontend\logo.png" class="img_system" alt=""
-                    width="50rem" />
+                <img src="images/logo.png" class="img_system" alt="" width="50rem" />
                 <h5>Advisee Management System</h5>
             </div>
         </a>

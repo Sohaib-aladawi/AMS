@@ -69,3 +69,5 @@ Route::POST('/addAdvisor/save',[AdmainController::class,'store']);
 
 // Add Student page
 Route::get('/addStudent',[AdmainController::class,'showAddStudent']);
+// create a new student
+Route::post('/addStudent/save',[AdmainController::class,'createStudent']);
